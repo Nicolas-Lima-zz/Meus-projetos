@@ -1,2 +1,2 @@
 # Meus projetos
- Projetos 'criados' por mim (Python)
+ Projetos criados em Python
