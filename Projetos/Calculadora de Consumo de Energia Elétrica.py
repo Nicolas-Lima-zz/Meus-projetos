@@ -60,7 +60,5 @@ while True:
     if continuar == 'N':
         break
 for c in range(0, cont - 1):
-    print('')
-    print(f'O aparelho {vermelho}{aparelhocont[c]}{acaba} com uma potência de {potenciacont[c]} watts ligado {tempocont[c]:.0f} horas por {diascontador[c]:.0f} dias vai sair por {verde}R${precocont[c]:.2f}{acaba}')
-print('')
+    print(f'\nO aparelho {vermelho}{aparelhocont[c]}{acaba} com uma potência de {potenciacont[c]} watts ligado {tempocont[c]:.0f} horas por {diascontador[c]:.0f} dias vai sair por {verde}R${precocont[c]:.2f}{acaba}\n')
 print('=' * 94)
