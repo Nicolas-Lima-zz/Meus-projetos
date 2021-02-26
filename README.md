@@ -1,3 +1,3 @@
 # Meus projetos
- Projetos criados em Python
+ Projetos feitos em python
 
