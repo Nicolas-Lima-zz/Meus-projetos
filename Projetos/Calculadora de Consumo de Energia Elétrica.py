@@ -8,7 +8,7 @@ diascontador = []
 verde = '\033[0;32m'
 vermelho = '\033[0;31m'
 acaba = '\033[m'
-print('=' * 20, '{}Calculadora de Consumo de Energia Elétrica{}'.format('\033[1;34m', '\033[m'), '=' * 20)
+print('=' * 20, f'{verde}Calculadora de Consumo de Energia Elétrica{acaba}', '=' * 20)
 print('=' * 84)
 while True:
     if cont < 2:
@@ -21,25 +21,33 @@ while True:
     aparelho = str(input('\n''Nome do aparelho: ')).title().strip()
     aparelhocont.append(aparelho)
     contadoraparelho = len(aparelhocont)
-    potencia = int(input('Digite a potência do seu aparelho: '))
+    potencia = input('Digite a potência do seu aparelho: ')
+    while not potencia.isdigit():
+        potencia = input('Digite a potência do seu aparelho: ')
+    else:
+        potencia = int(potencia)
     potenciacont.append(potencia)
-    tempo = int(input('Digite o tempo de funcionamento diário do aparelho em horas: '))
+    tempo = ''
     cont += 1
+    while not tempo.isdigit():
+        tempo = (input('Digite o tempo de funcionamento diário do aparelho em horas: '))
+    else:
+        tempo = int(tempo)
     while tempo > 24:
-        tempo = float(input('Digite o tempo de funcionamento diário do aparelho em horas: '))
-    if tempo > 24:
-        tempo = 0
-    if tempo <= 24:
-        tempo = tempo
+        tempo = int(input('Digite o tempo de funcionamento diário do aparelho em horas: '))
     tempocont.append(tempo)
     dias = ' '
-    while dias not in 'SN':
+    while dias not in 'SN' or not dias.isalpha():
         dias = str(input('Você usa o aparelho todos os dias? [S / N ] ')).upper().strip()
     if dias == 'S':
         diascont = 30
         consumo = (potencia / 1000) * tempo * 30 * custokwh
     elif dias == 'N':
-        quantosdias = int(input('Quantos dias por mês você usa o aparelho? '))
+        quantosdias = input('Quantos dias por mês você usa o aparelho? ')
+        while not quantosdias.isdigit():
+            quantosdias = input('Quantos dias por mês você usa o aparelho? ')
+        else:
+            quantosdias = int(quantosdias)
         diascont = quantosdias
         while quantosdias > 31:
             quantosdias = int(input('Quantos dias por mês você usa o aparelho? '))
@@ -53,8 +61,10 @@ while True:
     print('')
     print('=' * 94)
     continuar = ' '
-    while continuar not in 'SN':
+    while continuar not in 'SN' or not continuar.isalpha():
         continuar = str(input('\n''Quer calcular o consumo de outro aparelho? [S/N]: ')).upper().strip()
+    else:
+        continuar = str(continuar)
         print('')
         print('=' * 94)
     if continuar == 'N':
