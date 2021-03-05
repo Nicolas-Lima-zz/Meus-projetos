@@ -14,7 +14,7 @@ while True:
     precodoitem = float(input(f'Custo: {verde}R${final}'))
     listapreco.append(precodoitem)
     datadacompra = str(input(f'Data da compra ( {vermelho}NAO{final} para não colocar uma data ) : ')).upper().strip()
-    if datadacompra == 'N' or datadacompra == 'NAO':
+    if datadacompra[0] == 'N':
         datadacompra = 'Sem data de compra'
     print('')
     listadata.append(datadacompra)
