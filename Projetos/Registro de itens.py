@@ -27,7 +27,8 @@ while True:
     if adicionar == 'N':
         break
 for c in range(0, cont):
-    print(f'Nome do item: {listanome[c]} {preto}/{final} Preço: {verde}R${listapreco[c]:.2f}{final} {preto}/{final} Data da compra: {listadata[c]}')
+    print(f'Nome do item: {listanome[c]} {preto}/{final} Preço: {verde}R${listapreco[c]:.2f}{final} {preto}/{final}'
+          f' Data da compra: {listadata[c]}')
     print('')
 print('=' * 60)
 

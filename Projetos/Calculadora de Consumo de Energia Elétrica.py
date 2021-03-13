@@ -9,35 +9,39 @@ listapotencia = []
 listatempo = []
 listadias = []
 listaconsumo = []
+barra = f'{preto}/{final}'
 print(f'{f" {ciano}Calculadora de Consumo de Energia Elétrica{final} ":-^84}\n')
 while True:
-    if cont < 1:
-        custokwh = float(input(f'Digite o custo de {vermelho}1 kWh{final} em sua região: {verde}R${final}'))
-        print()
-    aparelho = str(input('Nome do aparelho: '))
-    while not aparelho.isalpha():
-        aparelho = str(input('Nome do aparelho: '))
+    if cont == 0:
+        while True:
+            try:
+                    custokwh = float(input(f'Digite o custo de {vermelho}1 kWh{final} em sua região: {verde}R${final}'))
+                    print()
+                    break
+            except ValueError:
+                pass
     cont += 1
-    listaaparelho.append(aparelho)
-    potencia = input('Digite a potência do aparelho: ')
-    while not potencia.isdigit():
-        potencia = input('Digite a potência do aparelho: ')
-    else:
-        potencia = int(potencia)
+    while True:
+        try:
+            potencia = int(input('Digite a potência do aparelho: '))
+            break
+        except ValueError:
+            pass
     listapotencia.append(potencia)
-    tempo = input('Digite o tempo de funcionamento diário do aparelho em horas: ')
-    while not tempo.isdigit():
-        tempo = input('Digite o tempo de funcionamento diário do aparelho em horas: ')
-    else:
-        tempo = int(tempo)
-    while tempo > 24:
-        tempo = int(input('Digite o tempo de funcionamento diário do aparelho em horas: '))
+    while True:
+        try:
+            tempo = int(input('Digite o tempo de funcionamento diário do aparelho em horas: '))
+            if tempo <= 24:
+                break
+        except ValueError:
+            pass
     listatempo.append(tempo)
-    dias = input('Dias de uso: ')
-    while not dias.isdigit():
-        dias = input('Dias de uso: ')
-    else:
-        dias = int(dias)
+    while True:
+        try:
+            dias = int(input('Dias de uso: '))
+            break
+        except ValueError:
+            pass
     listadias.append(dias)
     consumo = (potencia * tempo * dias * custokwh / 1000)
     listaconsumo.append(consumo)
@@ -49,6 +53,8 @@ while True:
         break
     print()
 for c in range(0, cont):
-    print()
-    print(f'O aparelho {vermelho}{listaaparelho[c]}{final} com uma potência de {listapotencia[c]} watts ligado '
-          f'{listatempo[c]} horas por {listadias[c]} dias vai custar {verde}R${listaconsumo[c]:.2f}{final}')
+    if c == 0:
+        print()
+    print(f'{c + 1}° aparelho: Potência:  {listapotencia[c]} watts {barra} Tempo de uso por dia: '
+          f'{listatempo[c]} horas {barra} Dias de uso: {listadias[c]} dias {barra} Custo: {verde}'
+          f'R${listaconsumo[c]:.2f}{final}')
